@@ -1,1013 +1,1385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6666Ranch</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 10px;
-            padding-bottom: 60px;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px 5px 0 0;
-            margin-bottom: 10px;
-        }
-        .section {
-            background-color: white;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        .section.active {
-            display: block;
-        }
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .amount {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #4CAF50;
-        }
-        .btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            margin-top: 10px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .btn-outline {
-            background: white;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-        }
-        .btn-danger {
-            background-color: #f44336;
-        }
-        .menu {
-            display: flex;
-            justify-content: space-around;
-            background-color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            max-width: 500px;
-            margin: 0 auto;
-            border-top: 1px solid #eee;
-        }
-        .menu-item {
-            text-align: center;
-            padding: 5px;
-            cursor: pointer;
-            flex: 1;
-        }
-        .menu-item.active {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        form {
-            margin-top: 15px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .record-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-        }
-        .record-item:last-child {
-            border-bottom: none;
-        }
-        .arrow {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        .animal-card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .animal-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .animal-price {
-            color: #4CAF50;
-        }
-        .tab-container {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 15px;
-        }
-        .tab {
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-        .tab.active {
-            border-bottom: 2px solid #4CAF50;
-            font-weight: bold;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-        }
-        .error {
-            background-color: #f44336;
-        }
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-        .bank-details {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border: 1px solid #ddd;
-        }
-        .bank-detail-item {
-            margin-bottom: 10px;
-        }
-        .detail-label {
-            font-weight: bold;
-            display: inline-block;
-            width: 120px;
-        }
-        .support-option {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .support-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sultan VIP App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-blue: #1e88e5;
+      --dark-blue: #0d47a1;
+      --light-blue: #64b5f6;
+      --gold: #ffc107;
+    }
+    
+    body {
+      background-color: #f8fafc;
+      color: #2d3748;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link {
+      color: white !important;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+      padding: 8px 12px !important;
+      margin: 0 4px;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+    
+    .nav-item.active .nav-link {
+      background-color: rgba(255,255,255,0.25);
+      font-weight: 600;
+    }
+    
+    .section {
+      display: none;
+      padding: 20px 0;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 20px;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .vip-card {
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    
+    .vip-card:hover {
+      border-color: var(--light-blue);
+    }
+    
+    .vip-active {
+      border: 2px solid var(--gold) !important;
+      background-color: rgba(255,193,7,0.05);
+    }
+    
+    .vip-card img {
+      height: 140px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-blue);
+      border-color: var(--primary-blue);
+      font-weight: 500;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-blue);
+      border-color: var(--dark-blue);
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-collapse {
+        background-color: var(--dark-blue);
+        padding: 12px;
+        border-radius: 12px;
+        margin-top: 10px;
+      }
+      
+      .vip-card {
+        margin-bottom: 24px;
+      }
+      
+      .section {
+        padding: 16px 0;
+      }
+    }
+    
+    .progress {
+      height: 28px;
+      border-radius: 14px;
+      background-color: #e2e8f0;
+    }
+    
+    .progress-bar {
+      background-color: var(--primary-blue);
+      border-radius: 14px;
+    }
+    
+    #notificationContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1100;
+      max-width: 350px;
+    }
+    
+    .form-toggle {
+      display: none;
+    }
+    
+    .form-toggle.active {
+      display: block;
+    }
+    
+    .bank-details {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .bank-details h6 {
+      color: var(--dark-blue);
+    }
+  </style>
 </head>
 <body>
-    <div class="notification" id="notification"></div>
-    
-    <header>
-        <h1>6666Ranch</h1>
-        <p>m.6666ranch.cc</p>
-    </header>
-
-    <!-- Home Section -->
-    <div id="home-section" class="section active">
-        <div class="user-info">
-            <p>ID: <span id="user-id">20649</span></p>
-            <p>Phone: <span id="user-phone">993204587</span></p>
-            <button class="btn btn-outline" onclick="copyToClipboard('user-id')">Copy ID</button>
-            <button class="btn btn-outline" onclick="copyToClipboard('user-phone')">Copy Phone</button>
-        </div>
-
-        <div class="balance-section">
-            <div class="amount" id="rewards-balance">0.00</div>
-            <p>Rewards (ETB)</p>
-            <p>Members: <span id="team-count">1</span></p>
-            <p>Rich Income (ETB)</p>
-            <div class="amount" id="income-balance">0.00</div>
-            <p><span id="points-balance">350</span> Points</p>
-        </div>
-
-        <div class="section-title">Balance(ETB)</div>
-        <div class="amount" id="main-balance">0.00</div>
-        <button class="btn" onclick="showForm('recharge-form')">Recharge</button>
-        <button class="btn" onclick="showForm('withdrawal-form')">Withdrawal</button>
-
-        <div id="recharge-form" class="form" style="display: none;">
-            <h3>Recharge Form</h3>
-            
-            <div class="bank-details">
-                <h3>Bank Transfer Details</h3>
-                <div class="bank-detail-item">
-                    <span class="detail-label">Account Name:</span>
-                    <span>SULTAN MOHAMMED</span>
-                </div>
-                <div class="bank-detail-item">
-                    <span class="detail-label">Bank Name:</span>
-                    <span>CBE (Commercial Bank of Ethiopia)</span>
-                </div>
-                <div class="bank-detail-item">
-                    <span class="detail-label">Account Number:</span>
-                    <span>1000634709006</span>
-                </div>
-                <div class="bank-detail-item">
-                    <span class="detail-label">Reference:</span>
-                    <span>Your User ID (20649)</span>
-                </div>
-            </div>
-            
-            <form onsubmit="rechargeAccount(event)">
-                <div class="form-group">
-                    <label for="recharge-amount">Amount (ETB)</label>
-                    <input type="number" id="recharge-amount" required>
-                </div>
-                <div class="form-group">
-                    <label for="payment-method">Payment Method</label>
-                    <select id="payment-method" required>
-                        <option value="">Select Payment Method</option>
-                        <option value="bank">Bank Transfer</option>
-                        <option value="telebirr">Telebirr</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="transaction-id">Transaction ID/Receipt</label>
-                    <input type="text" id="transaction-id" required>
-                </div>
-                <button type="submit" class="btn" id="recharge-submit">Submit</button>
-                <button type="button" class="btn btn-outline" onclick="hideForm('recharge-form')">Cancel</button>
-            </form>
-        </div>
-
-        <div id="withdrawal-form" class="form" style="display: none;">
-            <h3>Withdrawal Form</h3>
-            <form onsubmit="withdrawAmount(event)">
-                <div class="form-group">
-                    <label for="withdrawal-amount">Amount (ETB)</label>
-                    <input type="number" id="withdrawal-amount" required>
-                </div>
-                <div class="form-group">
-                    <label for="account-number">Account Number</label>
-                    <input type="text" id="account-number" required>
-                </div>
-                <div class="form-group">
-                    <label for="bank">Select Bank</label>
-                    <select id="bank" required>
-                        <option value="">Select Bank</option>
-                        <option value="cbe">Commercial Bank</option>
-                        <option value="awash">Awash Bank</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" id="withdrawal-submit">Submit</button>
-                <button type="button" class="btn btn-outline" onclick="hideForm('withdrawal-form')">Cancel</button>
-            </form>
-        </div>
-
-        <div class="section-title">
-            <span>The animal I adopted</span>
-            <span class="arrow" onclick="showSection('my-ranch-section')">View All ></span>
-        </div>
-        <div class="animal-card">
-            <div class="animal-name">Chicken</div>
-            <div class="animal-price">100 ETB</div>
-            <div>Status: Active</div>
-            <div>Daily Income: 5 ETB</div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#" data-section="dashboard">
+        <i class="bi bi-coin me-2"></i>SultanVIP
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-section="dashboard">
+              <i class="bi bi-speedometer2 me-1"></i>Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-section="recharge">
+              <i class="bi bi-cash-coin me-1"></i>Recharge
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-section="vip">
+              <i class="bi bi-stars me-1"></i>VIP
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-section="invite">
+              <i class="bi bi-people me-1"></i>Invite
+            </a>
+          </li>
+          <li class="nav-item" id="loginNavItem">
+            <a class="nav-link" href="#" data-section="auth">
+              <i class="bi bi-box-arrow-in-right me-1"></i>Login
+            </a>
+          </li>
+          <li class="nav-item d-none" id="logoutNavItem">
+            <a class="nav-link" href="#" id="logoutLink">
+              <i class="bi bi-box-arrow-right me-1"></i>Logout
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- My Ranch Section -->
-    <div id="my-ranch-section" class="section">
-        <div class="section-title">My Ranch</div>
-        
-        <div class="tab-container">
-            <div class="tab active" onclick="switchTab('adoption-tab')">Adoption</div>
-            <div class="tab" onclick="switchTab('fund-tab')">Fund</div>
-            <div class="tab" onclick="switchTab('withdrawal-tab')">Withdrawal</div>
-        </div>
-        
-        <div id="adoption-tab" class="tab-content active">
-            <div class="record-item">
-                <div>
-                    <div>Chicken</div>
-                    <small>Adopted: 2023-10-15</small>
-                </div>
-                <div>5 ETB/day</div>
-            </div>
-            <div class="record-item">
-                <div>
-                    <div>Sheep</div>
-                    <small>Adopted: 2023-10-20</small>
-                </div>
-                <div>20 ETB/day</div>
-            </div>
-            <button class="btn" onclick="showSection('ranch-section')">Adopt More Animals</button>
-        </div>
-        
-        <div id="fund-tab" class="tab-content">
-            <div class="record-item">
-                <div>
-                    <div>Recharge</div>
-                    <small>2023-10-10</small>
-                </div>
-                <div>+500 ETB</div>
-            </div>
-            <div class="record-item">
-                <div>
-                    <div>Animal Income</div>
-                    <small>2023-10-15</small>
-                </div>
-                <div>+25 ETB</div>
-            </div>
-        </div>
-        
-        <div id="withdrawal-tab" class="tab-content">
-            <div class="record-item">
-                <div>
-                    <div>Withdrawal</div>
-                    <small>2023-10-12</small>
-                </div>
-                <div>-200 ETB</div>
-            </div>
-            <div class="record-item">
-                <div>
-                    <div>Withdrawal (Pending)</div>
-                    <small>2023-10-18</small>
-                </div>
-                <div>-150 ETB</div>
-            </div>
-        </div>
+  <div class="d-lg-none fixed-bottom bg-white shadow-lg py-2">
+    <div class="container">
+      <div class="d-flex justify-content-around">
+        <a href="#" data-section="dashboard" class="text-center text-decoration-none text-primary">
+          <i class="bi bi-speedometer2 d-block fs-5"></i>
+          <small>Dashboard</small>
+        </a>
+        <a href="#" data-section="recharge" class="text-center text-decoration-none text-primary">
+          <i class="bi bi-cash-coin d-block fs-5"></i>
+          <small>Recharge</small>
+        </a>
+        <a href="#" data-section="vip" class="text-center text-decoration-none text-primary">
+          <i class="bi bi-stars d-block fs-5"></i>
+          <small>VIP</small>
+        </a>
+        <a href="#" data-section="invite" class="text-center text-decoration-none text-primary">
+          <i class="bi bi-people d-block fs-5"></i>
+          <small>Invite</small>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- Ranch Section -->
-    <div id="ranch-section" class="section">
-        <div class="section-title">Available Animals</div>
-        
-        <div class="animal-card">
-            <div class="animal-name">Chicken</div>
-            <div class="animal-price">100 ETB</div>
-            <div>Daily Income: 5 ETB</div>
-            <button class="btn" id="adopt-chicken" onclick="adoptAnimal('Chicken', 100, 'adopt-chicken')">Adopt</button>
-        </div>
-        
-        <div class="animal-card">
-            <div class="animal-name">Sheep</div>
-            <div class="animal-price">500 ETB</div>
-            <div>Daily Income: 20 ETB</div>
-            <button class="btn" id="adopt-sheep" onclick="adoptAnimal('Sheep', 500, 'adopt-sheep')">Adopt</button>
-        </div>
-        
-        <div class="animal-card">
-            <div class="animal-name">Cow</div>
-            <div class="animal-price">2000 ETB</div>
-            <div>Daily Income: 100 ETB</div>
-            <button class="btn" id="adopt-cow" onclick="adoptAnimal('Cow', 2000, 'adopt-cow')">Adopt</button>
-        </div>
-    </div>
+  <div id="notificationContainer"></div>
 
-    <!-- Interaction Section -->
-    <div id="interaction-section" class="section">
-        <div class="section-title">Team Interaction</div>
-        
-        <form onsubmit="sendMessage(event)">
-            <div class="form-group">
-                <textarea id="message-text" placeholder="Write your message..." rows="3" required></textarea>
+  <div class="container my-4">
+    <section id="dashboard" class="section active">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-primary"><i class="bi bi-speedometer2 me-2"></i>Dashboard Overview</h4>
+          
+          <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+              <div class="card bg-light-blue bg-opacity-10 border-primary">
+                <div class="card-body text-center">
+                  <h5 class="text-muted">Current Balance</h5>
+                  <h2 class="text-primary" id="dashboardBalance">0 ETB</h2>
+                </div>
+              </div>
             </div>
-            <button type="submit" class="btn" id="message-submit">Send Message</button>
-        </form>
-        
-        <div class="message-list" style="margin-top: 20px;">
-            <div class="record-item">
-                <div>
-                    <strong>Admin:</strong> Welcome to 6666Ranch!
-                    <div><small>2 days ago</small></div>
+            
+            <div class="col-md-4 mb-4">
+              <div class="card bg-light-blue bg-opacity-10 border-primary">
+                <div class="card-body text-center">
+                  <h5 class="text-muted">VIP Status</h5>
+                  <h2 id="dashboardVip">No VIP</h2>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+              <div class="card bg-light-blue bg-opacity-10 border-primary">
+                <div class="card-body text-center">
+                  <h5 class="text-muted">Daily Income</h5>
+                  <h2 id="dashboardIncome">0 ETB</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card shadow-sm mt-3 border-primary">
+            <div class="card-body">
+              <h5 class="text-primary"><i class="bi bi-award me-2"></i>VIP Status</h5>
+              <div class="progress mb-3">
+                <div id="vipProgress" class="progress-bar progress-bar-striped progress-bar-animated" 
+                     role="progressbar" style="width: 0%"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p><i class="bi bi-calendar-check me-2"></i>Expires in: <span id="vipExpiryDays">0</span> days</p>
+                </div>
+                <div class="col-md-6 text-end">
+                  <button class="btn btn-sm btn-primary" id="renewVipBtn">
+                    <i class="bi bi-arrow-repeat me-1"></i>Renew Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <div class="card shadow-sm border-primary">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-lightning me-2"></i>Quick Actions</h5>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" id="quickRechargeBtn">
+                      <i class="bi bi-cash-coin me-1"></i> Recharge Now
+                    </button>
+                    <button class="btn btn-outline-primary" id="upgradeVipBtn">
+                      <i class="bi bi-stars me-1"></i> Upgrade VIP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <div class="card shadow-sm border-primary">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5>
+                  <div id="recentTransactions">
+                    <p class="text-muted">No recent transactions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recharge" class="section">
+      <div class="card shadow-sm border-primary">
+        <div class="card-body">
+          <h4 class="card-title text-primary"><i class="bi bi-cash-coin me-2"></i>Account Recharge</h4>
+          
+          <div class="bank-details mb-4">
+            <h6><i class="bi bi-bank me-2"></i>Bank Transfer Details</h6>
+            <p class="mb-1"><strong>Bank Name:</strong> Commercial Bank of Ethiopia</p>
+            <p class="mb-1"><strong>Account Name:</strong> Sultan VIP</p>
+            <p class="mb-1"><strong>Account Number:</strong> 100034567890</p>
+          </div>
+          
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-wallet2 me-2"></i>Recharge Amount</h5>
+                  <div class="mb-3">
+                    <label class="form-label">Enter Amount (ETB)</label>
+                    <input type="number" id="rechargeAmount" class="form-control form-control-lg" placeholder="100">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Your Bank Account Name</label>
+                    <input type="text" id="bankAccountName" class="form-control" placeholder="Your name as in bank account">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Transaction Reference</label>
+                    <input type="text" id="transactionRef" class="form-control" placeholder="Transaction ID from your bank">
+                  </div>
+                  <button class="btn btn-primary btn-lg w-100" id="rechargeBtn">
+                    <i class="bi bi-plus-circle me-1"></i> Submit Recharge
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-lightning me-2"></i>Quick Recharge</h5>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary recharge-quick-btn" data-amount="100">
+                      100 ETB
+                    </button>
+                    <button class="btn btn-outline-primary recharge-quick-btn" data-amount="200">
+                      200 ETB
+                    </button>
+                    <button class="btn btn-outline-primary recharge-quick-btn" data-amount="500">
+                      500 ETB
+                    </button>
+                    <button class="btn btn-outline-primary recharge-quick-btn" data-amount="1000">
+                      1000 ETB
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vip" class="section">
+      <div class="card shadow-sm border-primary">
+        <div class="card-body">
+          <h4 class="card-title text-primary"><i class="bi bi-stars me-2"></i>VIP Packages</h4>
+          <div class="alert alert-primary">
+            <i class="bi bi-info-circle me-2"></i> Upgrade your VIP level to increase your daily earnings!
+          </div>
+          
+          <div class="row mt-3">
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="card vip-card h-100" data-level="1" data-price="100" data-income="10">
+                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="VIP 1">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="card-title mb-0">VIP 1</h5>
+                    <span class="badge bg-primary">Basic</span>
+                  </div>
+                  <p class="text-muted">Smartphone Package</p>
+                  <p><i class="bi bi-currency-exchange me-2"></i> <strong>100 ETB</strong></p>
+                  <p><i class="bi bi-cash-stack me-2"></i> <strong>10 ETB/day</strong></p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <button class="btn btn-primary w-100 activate-vip-btn">
+                    <i class="bi bi-lightning me-1"></i> Activate
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="card vip-card h-100" data-level="2" data-price="200" data-income="25">
+                <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="VIP 2">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="card-title mb-0">VIP 2</h5>
+                    <span class="badge bg-success">Standard</span>
+                  </div>
+                  <p class="text-muted">Tablet Package</p>
+                  <p><i class="bi bi-currency-exchange me-2"></i> <strong>200 ETB</strong></p>
+                  <p><i class="bi bi-cash-stack me-2"></i> <strong>25 ETB/day</strong></p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <button class="btn btn-primary w-100 activate-vip-btn">
+                    <i class="bi bi-lightning me-1"></i> Activate
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="card vip-card h-100" data-level="3" data-price="500" data-income="70">
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="VIP 3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="card-title mb-0">VIP 3</h5>
+                    <span class="badge bg-warning text-dark">Premium</span>
+                  </div>
+                  <p class="text-muted">Laptop Package</p>
+                  <p><i class="bi bi-currency-exchange me-2"></i> <strong>500 ETB</strong></p>
+                  <p><i class="bi bi-cash-stack me-2"></i> <strong>70 ETB/day</strong></p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <button class="btn btn-primary w-100 activate-vip-btn">
+                    <i class="bi bi-lightning me-1"></i> Activate
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="card vip-card h-100" data-level="4" data-price="1000" data-income="160">
+                <img src="https://images.unsplash.com/photo-1571415060716-baff5f717c37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="VIP 4">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="card-title mb-0">VIP 4</h5>
+                    <span class="badge bg-danger">Ultimate</span>
+                  </div>
+                  <p class="text-muted">Smart TV Package</p>
+                  <p><i class="bi bi-currency-exchange me-2"></i> <strong>1000 ETB</strong></p>
+                  <p><i class="bi bi-cash-stack me-2"></i> <strong>160 ETB/day</strong></p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <button class="btn btn-primary w-100 activate-vip-btn">
+                    <i class="bi bi-lightning me-1"></i> Activate
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card shadow-sm mt-4 d-none" id="vipActivationFlow">
+            <div class="card-body">
+              <h5 class="text-primary"><i class="bi bi-stars me-2"></i>VIP Activation</h5>
+              <div id="vipActivationSteps" class="mt-3">
                 </div>
             </div>
-            <div class="record-item">
-                <div>
-                    <strong>User123:</strong> How do I withdraw?
-                    <div><small>1 day ago</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="invite" class="section">
+      <div class="card shadow-sm border-primary">
+        <div class="card-body">
+          <h4 class="card-title text-primary"><i class="bi bi-people me-2"></i>Invite Friends & Earn</h4>
+          
+          <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-link-45deg me-2"></i>Your Referral Link</h5>
+                  <div class="input-group mt-3">
+                    <input type="text" id="refLink" class="form-control" value="Loading..." readonly>
+                    <button class="btn btn-primary" id="copyLinkBtn">
+                      <i class="bi bi-clipboard me-1"></i> Copy
+                    </button>
+                  </div>
+                  <div class="alert alert-info mt-3">
+                    <i class="bi bi-info-circle me-2"></i> Share this link and earn 10% of your friend's first recharge!
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        
-        <div class="section-title" style="margin-top: 20px;">My Team</div>
-        <div class="record-item">
-            <div>User456</div>
-            <div>Active</div>
-        </div>
-        <div class="record-item">
-            <div>User789</div>
-            <div>Pending</div>
-        </div>
-        <button class="btn" onclick="showInviteForm()">Invite New Member</button>
-        
-        <div id="invite-form" style="display: none; margin-top: 15px;">
-            <form onsubmit="inviteMember(event)">
-                <div class="form-group">
-                    <label for="invite-phone">Phone Number</label>
-                    <input type="tel" id="invite-phone" required>
+            
+            <div class="col-md-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h5 class="text-primary"><i class="bi bi-graph-up me-2"></i>Your Referral Stats</h5>
+                  <div class="text-center py-4">
+                    <div class="display-4 text-primary mb-2" id="referralCount">0</div>
+                    <p class="text-muted">Friends Invited</p>
+                  </div>
+                  <div class="text-center py-4">
+                    <div class="display-4 text-primary mb-2" id="referralEarnings">0 ETB</div>
+                    <p class="text-muted">Total Earnings</p>
+                  </div>
                 </div>
-                <button type="submit" class="btn" id="invite-submit">Send Invitation</button>
-                <button type="button" class="btn btn-outline" onclick="hideInviteForm()">Cancel</button>
-            </form>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="text-primary"><i class="bi bi-arrow-down-circle me-2"></i>Withdraw Earnings</h5>
+              <div class="mb-3">
+                <label class="form-label">Amount (ETB)</label>
+                <input type="number" id="withdrawAmount" class="form-control" placeholder="Enter amount to withdraw">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Bank Account Details</label>
+                <input type="text" id="withdrawBankName" class="form-control mb-2" placeholder="Bank Name">
+                <input type="text" id="withdrawAccountName" class="form-control mb-2" placeholder="Account Name">
+                <input type="text" id="withdrawAccountNumber" class="form-control" placeholder="Account Number">
+              </div>
+              <button class="btn btn-primary w-100" id="withdrawBtn">
+                <i class="bi bi-arrow-down-circle me-1"></i> Request Withdrawal
+              </button>
+            </div>
+          </div>
+          
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="text-primary"><i class="bi bi-headset me-2"></i>Contact Support</h5>
+              <p>Need help? Contact our support team via:</p>
+              <div class="d-grid gap-2">
+                <a href="https://t.me/sultanvipsupport" class="btn btn-outline-primary" target="_blank">
+                  <i class="bi bi-telegram me-1"></i> Telegram Support
+                </a>
+                <a href="https://wa.me/+251912345678" class="btn btn-outline-success" target="_blank">
+                  <i class="bi bi-whatsapp me-1"></i> WhatsApp Support
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <!-- Mine Section -->
-    <div id="mine-section" class="section">
-        <div class="section-title">My Account</div>
-        
-        <form onsubmit="updateProfile(event)">
-            <div class="form-group">
-                <label for="user-name">Name</label>
-                <input type="text" id="user-name" value="User123" required>
-            </div>
-            <div class="form-group">
-                <label for="user-phone-input">Phone</label>
-                <input type="tel" id="user-phone-input" value="993204587" required>
-            </div>
-            <div class="form-group">
-                <label for="user-password">Change Password</label>
-                <input type="password" id="user-password" placeholder="Leave blank to keep current">
-            </div>
-            <button type="submit" class="btn" id="profile-submit">Update Profile</button>
-        </form>
-        
-        <div class="section-title" style="margin-top: 20px;">Account Security</div>
-        <button class="btn btn-outline" onclick="showSecuritySettings()">Security Settings</button>
-        
-        <div id="security-settings" style="display: none; margin-top: 15px;">
-            <div class="form-group">
-                <label for="current-password">Current Password</label>
-                <input type="password" id="current-password" required>
-            </div>
-            <div class="form-group">
-                <label for="new-password">New Password</label>
-                <input type="password" id="new-password" required>
-            </div>
-            <button class="btn" onclick="changePassword()" id="password-submit">Change Password</button>
-        </div>
-        
-        <div class="section-title" style="margin-top: 20px;">Customer Support</div>
-        <div class="support-option" onclick="contactSupport('telegram')">
-            <div class="support-icon">T</div>
-            <div>
-                <div class="support-title">Telegram Support</div>
-                <div class="support-contact">@BNSTGO</div>
-            </div>
-        </div>
-        <div class="support-option" onclick="contactSupport('whatsapp')">
-            <div class="support-icon">W</div>
-            <div>
-                <div class="support-title">WhatsApp Support</div>
-                <div class="support-contact">+251993204587</div>
-            </div>
-        </div>
-        
-        <button class="btn btn-danger" style="margin-top: 30px;" onclick="logout()">Logout</button>
-    </div>
-
-    <div class="menu">
-        <div class="menu-item active" onclick="showSection('home-section')">Home</div>
-        <div class="menu-item" onclick="showSection('my-ranch-section')">My Ranch</div>
-        <div class="menu-item" onclick="showSection('ranch-section')">Ranch</div>
-        <div class="menu-item" onclick="showSection('interaction-section')">Interaction</div>
-        <div class="menu-item" onclick="showSection('mine-section')">Mine</div>
-    </div>
-
-    <script>
-        // Telegram Bot Configuration
-        const BOT_TOKEN = '8091773251:AAEMxxi8UA8keky1kE89Y1DGykfEV4cOE9g';
-        const CHAT_ID = '7384126560';
-        const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
-        // App state
-        const state = {
-            balance: 1000, // Starting balance for testing
-            rewards: 0,
-            income: 0,
-            points: 350,
-            teamCount: 1,
-            animals: [
-                { name: "Chicken", price: 100, income: 5, adopted: false },
-                { name: "Sheep", price: 500, income: 20, adopted: false },
-                { name: "Cow", price: 2000, income: 100, adopted: false }
-            ],
-            transactions: [
-                { type: "recharge", amount: 500, date: "2023-10-10" },
-                { type: "withdrawal", amount: -200, date: "2023-10-12" },
-                { type: "income", amount: 25, date: "2023-10-15" },
-                { type: "withdrawal", amount: -150, date: "2023-10-18", status: "pending" }
-            ],
-            messages: [
-                { sender: "Admin", text: "Welcome to 6666Ranch!", date: "2 days ago" },
-                { sender: "User123", text: "How do I withdraw?", date: "1 day ago" }
-            ],
-            teamMembers: [
-                { name: "User456", status: "active" },
-                { name: "User789", status: "pending" }
-            ]
-        };
-
-        // Initialize UI
-        function updateUI() {
-            document.getElementById("main-balance").textContent = state.balance.toFixed(2);
-            document.getElementById("rewards-balance").textContent = state.rewards.toFixed(2);
-            document.getElementById("income-balance").textContent = state.income.toFixed(2);
-            document.getElementById("points-balance").textContent = state.points;
-            document.getElementById("team-count").textContent = state.teamCount;
-        }
-
-        // Navigation functions
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Find the corresponding menu item and activate it
-            const menuItems = document.querySelectorAll('.menu-item');
-            for (let i = 0; i < menuItems.length; i++) {
-                if (menuItems[i].textContent.toLowerCase().includes(sectionId.replace('-section', ''))) {
-                    menuItems[i].classList.add('active');
-                    break;
-                }
-            }
-        }
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            event.target.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        // Form functions
-        function showForm(formId) {
-            document.querySelectorAll('.form').forEach(form => {
-                form.style.display = 'none';
-            });
-            document.getElementById(formId).style.display = 'block';
-        }
-
-        function hideForm(formId) {
-            document.getElementById(formId).style.display = 'none';
-        }
-
-        function showInviteForm() {
-            document.getElementById('invite-form').style.display = 'block';
-        }
-
-        function hideInviteForm() {
-            document.getElementById('invite-form').style.display = 'none';
-        }
-
-        function showSecuritySettings() {
-            document.getElementById('security-settings').style.display = 'block';
-        }
-
-        // Support functions
-        function contactSupport(type) {
-            let url, message;
-            
-            const defaultMessage = `Hello 6666Ranch Support,\n\n` +
-                                 `I need assistance with my account:\n` +
-                                 `User ID: 20649\n` +
-                                 `Phone: 993204587\n\n` +
-                                 `[Describe your issue here]`;
-            
-            if (type === 'telegram') {
-                url = `https://t.me/BNSTGO?text=${encodeURIComponent(defaultMessage)}`;
-            } else if (type === 'whatsapp') {
-                url = `https://wa.me/251993204587?text=${encodeURIComponent(defaultMessage)}`;
-            }
-            
-            window.open(url, '_blank');
-        }
-
-        // Telegram Bot Functions
-        async function sendToTelegram(message) {
-            try {
-                const response = await fetch(TELEGRAM_API, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: message,
-                        parse_mode: 'HTML'
-                    })
-                });
+    <section id="auth" class="section">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div id="loginForm" class="form-toggle active">
+            <div class="card shadow-sm border-primary">
+              <div class="card-body">
+                <h4 class="card-title text-center text-primary"><i class="bi bi-box-arrow-in-right me-2"></i>Login to Your Account</h4>
                 
-                const data = await response.json();
-                return data.ok;
-            } catch (error) {
-                console.error('Error sending to Telegram:', error);
-                return false;
-            }
-        }
-
-        function createLoadingButton(buttonId) {
-            const button = document.getElementById(buttonId);
-            if (button) {
-                button.innerHTML = '<span class="loading"></span> Processing...';
-                button.disabled = true;
-            }
-        }
-
-        function resetButton(buttonId, originalText) {
-            const button = document.getElementById(buttonId);
-            if (button) {
-                button.textContent = originalText;
-                button.disabled = false;
-            }
-        }
-
-        // Business logic functions
-        async function rechargeAccount(e) {
-            e.preventDefault();
-            const button = e.target.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            createLoadingButton('recharge-submit');
-            
-            const amount = parseFloat(document.getElementById('recharge-amount').value);
-            const method = document.getElementById('payment-method').value;
-            const transactionId = document.getElementById('transaction-id').value;
-            
-            if (amount <= 0) {
-                showNotification("Amount must be greater than 0", true);
-                resetButton('recharge-submit', originalText);
-                return;
-            }
-            
-            // Send to Telegram
-            const telegramMessage = `💰 <b>New Recharge Request</b>\n\n` +
-                                 `User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `Amount: ${amount} ETB\n` +
-                                 `Method: ${method}\n` +
-                                 `Transaction ID: ${transactionId}\n` +
-                                 `Phone: ${document.getElementById('user-phone').textContent}\n\n` +
-                                 `Bank Details:\n` +
-                                 `Account: SULTAN MOHAMMED\n` +
-                                 `Bank: CBE\n` +
-                                 `Account No: 1000634709006`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                state.balance += amount;
-                state.transactions.push({
-                    type: "recharge",
-                    amount: amount,
-                    date: new Date().toISOString().split('T')[0],
-                    method: method,
-                    transactionId: transactionId
-                });
-                updateUI();
-                hideForm('recharge-form');
-                showNotification(`Recharge request for ${amount} ETB submitted. Contact support if not credited within 2 hours.`);
-            } else {
-                showNotification("Failed to send request. Please contact support directly.", true);
-            }
-            
-            resetButton('recharge-submit', originalText);
-        }
-
-        async function withdrawAmount(e) {
-            e.preventDefault();
-            const button = e.target.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            createLoadingButton('withdrawal-submit');
-            
-            const amount = parseFloat(document.getElementById('withdrawal-amount').value);
-            const account = document.getElementById('account-number').value;
-            const bank = document.getElementById('bank').value;
-            
-            if (amount <= 0) {
-                showNotification("Amount must be greater than 0", true);
-                resetButton('withdrawal-submit', originalText);
-                return;
-            }
-            
-            if (amount > state.balance) {
-                showNotification("Insufficient balance", true);
-                resetButton('withdrawal-submit', originalText);
-                return;
-            }
-            
-            // Send to Telegram
-            const telegramMessage = `💸 <b>New Withdrawal Request</b>\n\n` +
-                                 `User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `Amount: ${amount} ETB\n` +
-                                 `Account: ${account}\n` +
-                                 `Bank: ${bank}\n` +
-                                 `Phone: ${document.getElementById('user-phone').textContent}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                state.balance -= amount;
-                state.transactions.push({
-                    type: "withdrawal",
-                    amount: -amount,
-                    date: new Date().toISOString().split('T')[0],
-                    status: "pending",
-                    account: account,
-                    bank: bank
-                });
-                updateUI();
-                hideForm('withdrawal-form');
-                showNotification(`Withdrawal request for ${amount} ETB submitted. Processing may take 24 hours.`);
-            } else {
-                showNotification("Failed to send request. Please contact support directly.", true);
-            }
-            
-            resetButton('withdrawal-submit', originalText);
-        }
-
-        async function adoptAnimal(name, price, buttonId) {
-            createLoadingButton(buttonId);
-            
-            // Check balance
-            if (price > state.balance) {
-                showNotification(`Insufficient balance. You need ${price} ETB to adopt this animal.`, true);
-                resetButton(buttonId, 'Adopt');
-                return;
-            }
-            
-            // Find the animal
-            const animal = state.animals.find(a => a.name === name);
-            if (!animal) {
-                showNotification("Animal not found", true);
-                resetButton(buttonId, 'Adopt');
-                return;
-            }
-            
-            // Check if already adopted
-            if (animal.adopted) {
-                showNotification(`You have already adopted a ${name}`, true);
-                resetButton(buttonId, 'Adopt');
-                return;
-            }
-            
-            // Send to Telegram
-            const telegramMessage = `🐄 <b>New Animal Adoption</b>\n\n` +
-                                 `User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `Animal: ${name}\n` +
-                                 `Price: ${price} ETB\n` +
-                                 `Phone: ${document.getElementById('user-phone').textContent}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                // Update state
-                state.balance -= price;
-                animal.adopted = true;
+                <div class="mt-4">
+                  <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control form-control-lg" placeholder="your@email.com">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPass" class="form-control form-control-lg" placeholder="••••••••">
+                  </div>
+                  <div class="d-grid mt-4">
+                    <button class="btn btn-primary btn-lg" id="loginBtn">
+                      <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                    </button>
+                  </div>
+                  <div class="text-center mt-3">
+                    <p>Don't have an account? <a href="#" class="text-primary" id="showSignupBtn">Sign up now</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="signupForm" class="form-toggle">
+            <div class="card shadow-sm border-primary">
+              <div class="card-body">
+                <h4 class="card-title text-center text-primary"><i class="bi bi-person-plus me-2"></i>Create New Account</h4>
                 
-                // Update button
-                const button = document.getElementById(buttonId);
-                if (button) {
-                    button.textContent = 'Adopted';
-                    button.disabled = true;
-                    button.style.backgroundColor = '#cccccc';
-                }
-                
-                // Update UI
-                updateUI();
-                showNotification(`Successfully adopted a ${name}! Daily income: ${animal.income} ETB`);
-                
-                // Show in My Ranch section
-                showSection('my-ranch-section');
-            } else {
-                showNotification("Failed to process adoption. Please try again or contact support.", true);
-                resetButton(buttonId, 'Adopt');
-            }
-        }
+                <div class="mt-4">
+                  <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="signName" class="form-control form-control-lg" placeholder="Your full name">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="signEmail" class="form-control form-control-lg" placeholder="your@email.com">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="signPass" class="form-control form-control-lg" placeholder="••••••••">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="signPassConfirm" class="form-control form-control-lg" placeholder="••••••••">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Referral Code (Optional)</label>
+                    <input type="text" id="signReferral" class="form-control form-control-lg" placeholder="If you were referred">
+                  </div>
+                  <div class="d-grid mt-4">
+                    <button class="btn btn-primary btn-lg" id="signupBtn">
+                      <i class="bi bi-person-plus me-1"></i> Sign Up
+                    </button>
+                  </div>
+                  <div class="text-center mt-3">
+                    <p>Already have an account? <a href="#" class="text-primary" id="showLoginBtn">Login here</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-        async function sendMessage(e) {
-            e.preventDefault();
-            createLoadingButton('message-submit');
-            
-            const text = document.getElementById('message-text').value;
-            
-            // Send to Telegram
-            const telegramMessage = `✉️ <b>New Team Message</b>\n\n` +
-                                 `From: ${document.getElementById('user-id').textContent}\n` +
-                                 `Phone: ${document.getElementById('user-phone').textContent}\n\n` +
-                                 `Message: ${text}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                state.messages.push({
-                    sender: "You",
-                    text: text,
-                    date: "Just now"
-                });
-                document.getElementById('message-text').value = '';
-                showNotification("Message sent to your team");
-            } else {
-                showNotification("Failed to send message. Please try again.", true);
-            }
-            
-            resetButton('message-submit', 'Send Message');
-        }
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, get, update, onValue, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        async function inviteMember(e) {
-            e.preventDefault();
-            createLoadingButton('invite-submit');
-            
-            const phone = document.getElementById('invite-phone').value;
-            
-            // Send to Telegram
-            const telegramMessage = `📩 <b>New Member Invitation</b>\n\n` +
-                                 `From User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `Invited Phone: ${phone}\n` +
-                                 `Inviter Phone: ${document.getElementById('user-phone').textContent}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                state.teamCount++;
-                state.teamMembers.push({
-                    name: phone,
-                    status: "pending"
-                });
-                document.getElementById('invite-phone').value = '';
-                hideInviteForm();
-                showNotification(`Invitation sent to ${phone}`);
-                updateUI();
-            } else {
-                showNotification("Failed to send invitation. Please try again.", true);
-            }
-            
-            resetButton('invite-submit', 'Send Invitation');
-        }
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFjoQLY4o2d-TsTC9cARPNeVMF86PolH8 ",
+      authDomain: " sultanwebapp-2c251.firebaseapp.com",
+      databaseURL: " https://sultanwebapp-2c251-default-rtdb.firebaseio.com",
+      projectId: " sultanwebapp-2c251",
+      storageBucket: " sultanwebapp-2c251.firebasestorage.app",
+      messagingSenderId: " 566482579045",
+      appId: " 1:566482579045:web:4f634215449b95de82208c"
+    };
 
-        async function updateProfile(e) {
-            e.preventDefault();
-            createLoadingButton('profile-submit');
-            
-            const name = document.getElementById('user-name').value;
-            const phone = document.getElementById('user-phone-input').value;
-            const password = document.getElementById('user-password').value;
-            
-            // Send to Telegram
-            const telegramMessage = `👤 <b>Profile Update</b>\n\n` +
-                                 `User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `New Name: ${name}\n` +
-                                 `New Phone: ${phone}\n` +
-                                 `Password Changed: ${password ? 'Yes' : 'No'}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                document.getElementById('user-phone').textContent = phone;
-                showNotification("Profile updated successfully");
-            } else {
-                showNotification("Failed to update profile. Please try again.", true);
-            }
-            
-            resetButton('profile-submit', 'Update Profile');
-        }
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
 
-        async function changePassword() {
-            createLoadingButton('password-submit');
-            
-            const current = document.getElementById('current-password').value;
-            const newPass = document.getElementById('new-password').value;
-            
-            if (!current || !newPass) {
-                showNotification("Both fields are required", true);
-                resetButton('password-submit', 'Change Password');
-                return;
-            }
-            
-            // Send to Telegram
-            const telegramMessage = `🔒 <b>Password Change Request</b>\n\n` +
-                                 `User ID: ${document.getElementById('user-id').textContent}\n` +
-                                 `Phone: ${document.getElementById('user-phone').textContent}`;
-            
-            const sent = await sendToTelegram(telegramMessage);
-            
-            if (sent) {
-                showNotification("Password changed successfully");
-                document.getElementById('security-settings').style.display = 'none';
-                document.getElementById('current-password').value = '';
-                document.getElementById('new-password').value = '';
-            } else {
-                showNotification("Failed to change password. Please try again.", true);
-            }
-            
-            resetButton('password-submit', 'Change Password');
-        }
+    // DOM Elements
+    const sectionLinks = document.querySelectorAll('[data-section]');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const logoutLink = document.getElementById('logoutLink');
+    const showLoginBtn = document.getElementById('showLoginBtn');
+    const showSignupBtn = document.getElementById('showSignupBtn');
+    const rechargeBtn = document.getElementById('rechargeBtn');
+    const quickRechargeBtns = document.querySelectorAll('.recharge-quick-btn');
+    const vipActivateBtns = document.querySelectorAll('.activate-vip-btn');
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const withdrawBtn = document.getElementById('withdrawBtn');
+    const quickRechargeBtn = document.getElementById('quickRechargeBtn');
+    const upgradeVipBtn = document.getElementById('upgradeVipBtn');
+    const renewVipBtn = document.getElementById('renewVipBtn');
 
-        function logout() {
-            showNotification("Logged out successfully");
-            // In a real app, you would redirect to login page
-        }
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', function() {
+      setupEventListeners();
+      
+      // Check for referral parameter in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const refCode = urlParams.get('ref');
+      if (refCode) {
+        document.getElementById('signReferral').value = refCode;
+      }
+    });
 
-        // Utility functions
-        function showNotification(message, isError = false) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.style.backgroundColor = isError ? '#f44336' : '#4CAF50';
-            notification.style.display = 'block';
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
-        function copyToClipboard(elementId) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text);
-            showNotification(`Copied to clipboard: ${text}`);
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateUI();
-            
-            // Check adoption status and update buttons
-            state.animals.forEach(animal => {
-                if (animal.adopted) {
-                    const buttonId = `adopt-${animal.name.toLowerCase()}`;
-                    const button = document.getElementById(buttonId);
-                    if (button) {
-                        button.textContent = 'Adopted';
-                        button.disabled = true;
-                        button.style.backgroundColor = '#cccccc';
-                    }
-                }
-            });
+    function setupEventListeners() {
+      // Navigation links
+      sectionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showSection(this.getAttribute('data-section'));
         });
-    </script>
+      });
+
+      // Auth form toggles
+      showLoginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleAuthForm('loginForm');
+      });
+
+      showSignupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleAuthForm('signupForm');
+      });
+
+      // Auth buttons
+      loginBtn.addEventListener('click', login);
+      signupBtn.addEventListener('click', signup);
+      logoutLink.addEventListener('click', logout);
+
+      // Recharge buttons
+      rechargeBtn.addEventListener('click', recharge);
+      quickRechargeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const amount = this.getAttribute('data-amount');
+          document.getElementById('rechargeAmount').value = amount;
+        });
+      });
+
+      // VIP buttons
+      vipActivateBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const card = this.closest('.vip-card');
+          const level = card.dataset.level;
+          const price = card.dataset.price;
+          const income = card.dataset.income;
+          showVipActivation(level, price, income);
+        });
+      });
+
+      // Invite/Withdraw buttons
+      copyLinkBtn.addEventListener('click', copyLink);
+      withdrawBtn.addEventListener('click', withdraw);
+
+      // Quick action buttons
+      quickRechargeBtn.addEventListener('click', function() {
+        showSection('recharge');
+      });
+
+      upgradeVipBtn.addEventListener('click', function() {
+        showSection('vip');
+      });
+
+      renewVipBtn.addEventListener('click', renewVip);
+    }
+
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section
+      const section = document.getElementById(sectionId);
+      if (section) section.classList.add('active');
+      
+      // Update active nav item
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      const activeNav = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+      if (activeNav) activeNav.parentElement.classList.add('active');
+      
+      // Close mobile menu if open
+      const navbarCollapse = document.querySelector('.navbar-collapse.show');
+      if (navbarCollapse) {
+        new bootstrap.Collapse(navbarCollapse).hide();
+      }
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    function toggleAuthForm(formId) {
+      document.querySelectorAll('.form-toggle').forEach(form => {
+        form.classList.remove('active');
+      });
+      document.getElementById(formId).classList.add('active');
+    }
+
+    async function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPass').value;
+      
+      if (!email || !password) {
+        showNotification('Please enter both email and password', 'danger');
+        return;
+      }
+      
+      try {
+        loginBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Logging in...';
+        loginBtn.disabled = true;
+        
+        await signInWithEmailAndPassword(auth, email, password);
+        showNotification('Login successful!', 'success');
+        updateNavForLoggedIn();
+        updateUserUI();
+        showSection('dashboard');
+      } catch (error) {
+        showNotification('Login failed: ' + error.message, 'danger');
+      } finally {
+        loginBtn.innerHTML = '<i class="bi bi-box-arrow-in-right me-1"></i> Login';
+        loginBtn.disabled = false;
+      }
+    }
+
+    async function signup() {
+      const name = document.getElementById('signName').value;
+      const email = document.getElementById('signEmail').value;
+      const password = document.getElementById('signPass').value;
+      const confirmPass = document.getElementById('signPassConfirm').value;
+      const referral = document.getElementById('signReferral').value;
+      
+      if (!name || !email || !password || !confirmPass) {
+        showNotification('Please fill all required fields', 'danger');
+        return;
+      }
+      
+      if (password !== confirmPass) {
+        showNotification('Passwords do not match', 'danger');
+        return;
+      }
+      
+      try {
+        signupBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Creating account...';
+        signupBtn.disabled = true;
+        
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        await set(ref(database, 'users/' + user.uid), {
+          name: name,
+          email: email,
+          balance: 0,
+          vipLevel: 0,
+          lastClaim: 0,
+          referralCode: btoa(user.uid).substring(0, 8),
+          referredBy: referral || null,
+          createdAt: Date.now()
+        });
+        
+        showNotification('Account created successfully!', 'success');
+        updateNavForLoggedIn();
+        updateUserUI();
+        showSection('dashboard');
+      } catch (error) {
+        showNotification('Signup failed: ' + error.message, 'danger');
+      } finally {
+        signupBtn.innerHTML = '<i class="bi bi-person-plus me-1"></i> Sign Up';
+        signupBtn.disabled = false;
+      }
+    }
+
+    async function logout() {
+      try {
+        await signOut(auth);
+        showNotification('Logged out successfully', 'info');
+        updateNavForLoggedOut();
+        showSection('auth');
+        toggleAuthForm('loginForm');
+      } catch (error) {
+        showNotification('Logout failed: ' + error.message, 'danger');
+      }
+    }
+
+    function updateNavForLoggedIn() {
+      document.getElementById('loginNavItem').classList.add('d-none');
+      document.getElementById('logoutNavItem').classList.remove('d-none');
+    }
+    
+    function updateNavForLoggedOut() {
+      document.getElementById('loginNavItem').classList.remove('d-none');
+      document.getElementById('logoutNavItem').classList.add('d-none');
+    }
+
+    function showVipActivation(level, price, income) {
+      const user = auth.currentUser;
+      if (!user) {
+        showLoginAlert();
+        return;
+      }
+
+      const steps = document.getElementById('vipActivationSteps');
+      steps.innerHTML = `
+        <div class="alert alert-primary">
+          <i class="bi bi-info-circle me-2"></i>
+          You are about to activate <strong>VIP ${level}</strong> with daily income of <strong>${income} ETB</strong>
+        </div>
+        <div class="p-3 bg-light rounded">
+          <p class="mb-2"><i class="bi bi-currency-exchange me-2"></i> Activation Price: <strong>${price} ETB</strong></p>
+          <p class="mb-0"><i class="bi bi-cash-stack me-2"></i> Daily Income: <strong>${income} ETB</strong></p>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-outline-secondary" id="cancelVipBtn">
+            <i class="bi bi-x-circle me-1"></i> Cancel
+          </button>
+          <button class="btn btn-primary" id="confirmVipBtn" data-level="${level}" data-price="${price}">
+            <i class="bi bi-check-circle me-1"></i> Confirm Activation
+          </button>
+        </div>
+      `;
+      
+      document.getElementById('vipActivationFlow').classList.remove('d-none');
+      document.getElementById('vipActivationFlow').scrollIntoView({ behavior: 'smooth' });
+
+      // Add event listeners to new buttons
+      document.getElementById('cancelVipBtn').addEventListener('click', function() {
+        document.getElementById('vipActivationFlow').classList.add('d-none');
+      });
+
+      document.getElementById('confirmVipBtn').addEventListener('click', function() {
+        const level = this.getAttribute('data-level');
+        const price = parseFloat(this.getAttribute('data-price'));
+        activateVip(level, price);
+      });
+    }
+
+    async function activateVip(level, price) {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      try {
+        const confirmBtn = document.getElementById('confirmVipBtn');
+        confirmBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Processing...';
+        confirmBtn.disabled = true;
+
+        const userRef = ref(database, 'users/' + user.uid);
+        const snapshot = await get(userRef);
+        const userData = snapshot.val() || {};
+        
+        if (userData.balance < price) {
+          showInsufficientBalanceAlert(price - userData.balance);
+          confirmBtn.innerHTML = '<i class="bi bi-check-circle me-1"></i> Confirm Activation';
+          confirmBtn.disabled = false;
+          return;
+        }
+        
+        await update(userRef, {
+          vipLevel: level,
+          balance: userData.balance - price,
+          lastClaim: 0,
+          vipExpiry: Date.now() + 30 * 24 * 60 * 60 * 1000
+        });
+        
+        await push(ref(database, 'transactions/' + user.uid), {
+          type: 'vip_activation',
+          amount: price,
+          description: `VIP ${level} activation`,
+          timestamp: Date.now()
+        });
+        
+        showNotification(`VIP ${level} activated successfully!`, 'success');
+        updateUserUI();
+      } catch (error) {
+        showNotification('VIP activation failed: ' + error.message, 'danger');
+      } finally {
+        document.getElementById('vipActivationFlow').classList.add('d-none');
+      }
+    }
+
+    async function renewVip() {
+      const user = auth.currentUser;
+      if (!user) {
+        showSection('auth');
+        return;
+      }
+
+      try {
+        renewVipBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Processing...';
+        renewVipBtn.disabled = true;
+        
+        const userRef = ref(database, 'users/' + user.uid);
+        const snapshot = await get(userRef);
+        const userData = snapshot.val() || {};
+        
+        if (!userData.vipLevel) {
+          showNotification('You don\'t have an active VIP to renew', 'warning');
+          return;
+        }
+
+        const price = getVipPrice(userData.vipLevel);
+        if (userData.balance < price) {
+          showNotification(`You need ${price} ETB to renew your VIP. Current balance: ${userData.balance} ETB`, 'warning');
+          showSection('recharge');
+          return;
+        }
+        
+        await update(userRef, {
+          balance: userData.balance - price,
+          vipExpiry: Date.now() + 30 * 24 * 60 * 60 * 1000
+        });
+        
+        await push(ref(database, 'transactions/' + user.uid), {
+          type: 'vip_renewal',
+          amount: price,
+          description: `VIP ${userData.vipLevel} renewal`,
+          timestamp: Date.now()
+        });
+        
+        showNotification(`VIP ${userData.vipLevel} renewed successfully!`, 'success');
+        updateUserUI();
+      } catch (error) {
+        showNotification('Renewal failed: ' + error.message, 'danger');
+      } finally {
+        renewVipBtn.innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> Renew Now';
+        renewVipBtn.disabled = false;
+      }
+    }
+
+    function getVipPrice(level) {
+      switch(level) {
+        case 1: return 100;
+        case 2: return 200;
+        case 3: return 500;
+        case 4: return 1000;
+        default: return 0;
+      }
+    }
+
+    async function recharge() {
+      const amount = parseFloat(document.getElementById('rechargeAmount').value);
+      const accountName = document.getElementById('bankAccountName').value;
+      const transactionRef = document.getElementById('transactionRef').value;
+      const user = auth.currentUser;
+      
+      if (!user) {
+        showNotification('Please login first to recharge', 'warning');
+        showSection('auth');
+        return;
+      }
+      
+      if (isNaN(amount) || amount <= 0) {
+        showNotification('Please enter a valid amount', 'danger');
+        return;
+      }
+      
+      if (!accountName || !transactionRef) {
+        showNotification('Please enter your bank details and transaction reference', 'danger');
+        return;
+      }
+      
+      try {
+        rechargeBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Processing...';
+        rechargeBtn.disabled = true;
+        
+        const userRef = ref(database, 'users/' + user.uid);
+        const snapshot = await get(userRef);
+        const currentBalance = snapshot.val()?.balance || 0;
+        
+        await update(userRef, {
+          balance: currentBalance + amount
+        });
+
+        await push(ref(database, 'transactions/' + user.uid), {
+          type: 'recharge',
+          amount: amount,
+          description: 'Account recharge',
+          accountName: accountName,
+          transactionRef: transactionRef,
+          status: 'completed',
+          timestamp: Date.now()
+        });
+        
+        showNotification(`Recharge of ${amount} ETB successful! Your balance has been updated.`, 'success');
+        document.getElementById('rechargeAmount').value = '';
+        document.getElementById('bankAccountName').value = '';
+        document.getElementById('transactionRef').value = '';
+        updateUserUI();
+      } catch (error) {
+        showNotification('Recharge failed: ' + error.message, 'danger');
+      } finally {
+        rechargeBtn.innerHTML = '<i class="bi bi-plus-circle me-1"></i> Submit Recharge';
+        rechargeBtn.disabled = false;
+      }
+    }
+
+    async function withdraw() {
+      const amount = parseFloat(document.getElementById('withdrawAmount').value);
+      const bankName = document.getElementById('withdrawBankName').value;
+      const accountName = document.getElementById('withdrawAccountName').value;
+      const accountNumber = document.getElementById('withdrawAccountNumber').value;
+      const user = auth.currentUser;
+      
+      if (!user) {
+        showNotification('Please login first to withdraw', 'warning');
+        showSection('auth');
+        return;
+      }
+      
+      if (isNaN(amount) || amount <= 0) {
+        showNotification('Please enter a valid amount', 'danger');
+        return;
+      }
+      
+      if (!bankName || !accountName || !accountNumber) {
+        showNotification('Please enter your bank details', 'danger');
+        return;
+      }
+      
+      try {
+        withdrawBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Processing...';
+        withdrawBtn.disabled = true;
+        
+        const userRef = ref(database, 'users/' + user.uid);
+        const snapshot = await get(userRef);
+        const userData = snapshot.val() || {};
+        
+        if (userData.balance < amount) {
+          showNotification(`Insufficient balance. Your current balance is ${userData.balance} ETB`, 'danger');
+          return;
+        }
+        
+        await update(userRef, {
+          balance: userData.balance - amount
+        });
+
+        await push(ref(database, 'transactions/' + user.uid), {
+          type: 'withdrawal',
+          amount: amount,
+          description: 'Withdrawal request',
+          bankName: bankName,
+          accountName: accountName,
+          accountNumber: accountNumber,
+          status: 'pending',
+          timestamp: Date.now()
+        });
+        
+        showNotification(`Withdrawal request for ${amount} ETB submitted! Your balance has been deducted and our team will process it shortly.`, 'success');
+        document.getElementById('withdrawAmount').value = '';
+        document.getElementById('withdrawBankName').value = '';
+        document.getElementById('withdrawAccountName').value = '';
+        document.getElementById('withdrawAccountNumber').value = '';
+        updateUserUI();
+      } catch (error) {
+        showNotification('Withdrawal failed: ' + error.message, 'danger');
+      } finally {
+        withdrawBtn.innerHTML = '<i class="bi bi-arrow-down-circle me-1"></i> Request Withdrawal';
+        withdrawBtn.disabled = false;
+      }
+    }
+
+    function copyLink() {
+      const linkInput = document.getElementById('refLink');
+      linkInput.select();
+      document.execCommand('copy');
+      showNotification('Referral link copied to clipboard!', 'success');
+    }
+
+    function showNotification(message, type = 'info') {
+      const types = {
+        info: 'primary',
+        success: 'success',
+        warning: 'warning',
+        danger: 'danger'
+      };
+      
+      const notification = document.createElement('div');
+      notification.className = `alert alert-${types[type]} alert-dismissible fade show shadow`;
+      notification.role = 'alert';
+      notification.innerHTML = `
+        <i class="bi ${type === 'success' ? 'bi-check-circle' : type === 'danger' ? 'bi-exclamation-triangle' : 'bi-info-circle'} me-2"></i>
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+      
+      const container = document.getElementById('notificationContainer');
+      container.prepend(notification);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 150);
+      }, 5000);
+    }
+
+    function showLoginAlert() {
+      const alertHTML = `
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <i class="bi bi-exclamation-triangle me-2"></i>
+          Please login first to activate VIP
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+      document.getElementById('vipActivationSteps').insertAdjacentHTML('afterbegin', alertHTML);
+      showSection('auth');
+      toggleAuthForm('loginForm');
+    }
+
+    function showInsufficientBalanceAlert(amountNeeded) {
+      const alertHTML = `
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <i class="bi bi-currency-exchange me-2"></i>
+          You need ${amountNeeded} ETB more to activate this VIP level. 
+          <a href="#" data-section="recharge" class="alert-link">Recharge now</a>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+      document.getElementById('vipActivationSteps').insertAdjacentHTML('afterbegin', alertHTML);
+    }
+
+    async function updateUserUI() {
+      const user = auth.currentUser;
+      if (!user) return;
+      
+      const userRef = ref(database, 'users/' + user.uid);
+      onValue(userRef, (snapshot) => {
+        const userData = snapshot.val() || {};
+        
+        // Update Dashboard Balance
+        document.getElementById('dashboardBalance').textContent = (userData.balance || 0) + ' ETB';
+        
+        // Update VIP Status and Income
+        if (userData.vipLevel > 0) {
+          document.getElementById('dashboardVip').textContent = `VIP ${userData.vipLevel}`;
+          document.getElementById('dashboardIncome').textContent = getVipIncome(userData.vipLevel) + ' ETB';
+          
+          document.querySelectorAll('.vip-card').forEach(card => {
+            card.classList.remove('vip-active');
+            if (parseInt(card.dataset.level) === userData.vipLevel) {
+              card.classList.add('vip-active');
+            }
+          });
+          
+          if (userData.vipExpiry) {
+            const remainingDays = Math.ceil((userData.vipExpiry - Date.now()) / (1000 * 60 * 60 * 24));
+            const initialDuration = 30; 
+            const elapsedDays = initialDuration - remainingDays;
+            const progressPercent = Math.max(0, Math.min(100, (elapsedDays / initialDuration) * 100));
+            
+            document.getElementById('vipProgress').style.width = `${100 - progressPercent}%`;
+            document.getElementById('vipProgress').setAttribute('aria-valuenow', `${100 - progressPercent}`);
+
+            document.getElementById('vipExpiryDays').textContent = remainingDays > 0 ? remainingDays : 0;
+            
+            if (remainingDays < 7 && remainingDays > 0) {
+              document.getElementById('vipProgress').classList.remove('bg-primary');
+              document.getElementById('vipProgress').classList.add('bg-warning');
+            } else if (remainingDays <= 0) {
+              document.getElementById('vipProgress').classList.remove('bg-primary', 'bg-warning');
+              document.getElementById('vipProgress').classList.add('bg-danger');
+              document.getElementById('vipExpiryDays').textContent = 'Expired';
+            }
+            else {
+              document.getElementById('vipProgress').classList.remove('bg-warning', 'bg-danger');
+              document.getElementById('vipProgress').classList.add('bg-primary');
+            }
+          }
+        } else {
+          document.getElementById('dashboardVip').textContent = 'No VIP';
+          document.getElementById('dashboardIncome').textContent = '0 ETB';
+          document.getElementById('vipProgress').style.width = '0%';
+          document.getElementById('vipProgress').setAttribute('aria-valuenow', '0');
+          document.getElementById('vipExpiryDays').textContent = '0';
+          document.querySelectorAll('.vip-card').forEach(card => card.classList.remove('vip-active'));
+        }
+        
+        // Update Referral Link
+        if (!userData.referralCode) {
+          const refCode = btoa(user.uid).substring(0, 8);
+          update(userRef, { referralCode: refCode });
+          document.getElementById('refLink').value = `${window.location.origin}?ref=${refCode}`;
+        } else {
+          document.getElementById('refLink').value = `${window.location.origin}?ref=${userData.referralCode}`;
+        }
+        
+        // Update Referral Stats
+        const referralCount = userData.referrals ? Object.keys(userData.referrals).length : 0;
+        document.getElementById('referralCount').textContent = referralCount;
+        
+        let totalEarnings = 0;
+        if (userData.referrals) {
+          Object.values(userData.referrals).forEach(ref => {
+            totalEarnings += ref.earned || 0;
+          });
+        }
+        document.getElementById('referralEarnings').textContent = totalEarnings + ' ETB';
+        
+        // Load recent transactions
+        loadRecentTransactions();
+      });
+    }
+
+    function getVipIncome(level) {
+      switch(level) {
+        case 1: return 10;
+        case 2: return 25;
+        case 3: return 70;
+        case 4: return 160;
+        default: return 0;
+      }
+    }
+
+    async function loadRecentTransactions() {
+      const user = auth.currentUser;
+      if (!user) {
+        document.getElementById('recentTransactions').innerHTML = '<p class="text-muted">Please login to see transactions.</p>';
+        return;
+      }
+      
+      const transactionsRef = ref(database, 'transactions/' + user.uid);
+      const snapshot = await get(transactionsRef);
+      const transactions = [];
+      
+      snapshot.forEach(child => {
+        transactions.push({
+          id: child.key,
+          ...child.val()
+        });
+      });
+      
+      transactions.sort((a, b) => b.timestamp - a.timestamp);
+      
+      const container = document.getElementById('recentTransactions');
+      if (transactions.length === 0) {
+        container.innerHTML = '<p class="text-muted">No recent transactions</p>';
+        return;
+      }
+      
+      let html = '';
+      transactions.slice(0, 3).forEach(tx => {
+        const date = new Date(tx.timestamp).toLocaleString();
+        let typeClass = '';
+        let icon = '';
+        let description = tx.description || tx.type;
+
+        switch (tx.type) {
+          case 'recharge':
+            typeClass = 'text-success';
+            icon = 'bi-arrow-up-circle-fill';
+            break;
+          case 'withdrawal':
+            typeClass = 'text-danger';
+            icon = 'bi-arrow-down-circle-fill';
+            break;
+          case 'vip_activation':
+          case 'vip_renewal':
+            typeClass = 'text-primary';
+            icon = 'bi-stars';
+            break;
+          default:
+            typeClass = 'text-muted';
+            icon = 'bi-info-circle-fill';
+        }
+        
+        html += `
+          <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+            <div>
+              <span class="badge bg-opacity-10 ${typeClass} me-2"><i class="bi ${icon}"></i></span>
+              ${description}
+              <div class="text-muted small">${date}</div>
+            </div>
+            <div class="${typeClass} fw-bold">
+              ${tx.type === 'withdrawal' ? '-' : '+'}${tx.amount} ETB
+            </div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    // Auth state listener
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        updateNavForLoggedIn();
+        updateUserUI();
+      } else {
+        updateNavForLoggedOut();
+        document.getElementById('dashboardBalance').textContent = '0 ETB';
+        document.getElementById('dashboardVip').textContent = 'No VIP';
+        document.getElementById('dashboardIncome').textContent = '0 ETB';
+        document.getElementById('vipProgress').style.width = '0%';
+        document.getElementById('vipExpiryDays').textContent = '0';
+        document.getElementById('refLink').value = 'Login to get your link';
+        document.getElementById('referralCount').textContent = '0';
+        document.getElementById('referralEarnings').textContent = '0 ETB';
+        document.getElementById('recentTransactions').innerHTML = '<p class="text-muted">No recent transactions</p>';
+        showSection('auth');
+        toggleAuthForm('loginForm');
+      }
+    });
+
+    // Show dashboard by default when the page loads
+    showSection('dashboard'); 
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
