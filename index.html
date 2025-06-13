@@ -1,0 +1,56 @@
+
+
+<!-- Offline Local Chat (Mobile & Laptop over LAN Wi-Fi) -->
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline LAN Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    #chatBox { width: 100%; height: 300px; border: 1px solid #ccc; overflow-y: scroll; background: #fff; padding: 10px; margin-bottom: 10px; }
+    #message { width: 80%; padding: 10px; }
+    #sendBtn { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>Offline LAN Chat</h2>
+  <div id="chatBox"></div>
+  <input type="text" id="message" placeholder="Barreeffama kee galchi..." />
+  <button id="sendBtn">Ergi</button>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const messageInput = document.getElementById('message');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const ws = new WebSocket('ws://' + location.hostname + ':8080');
+
+    ws.onopen = function() {
+      appendMessage("[System] Connection established");
+    };
+
+    ws.onmessage = function(event) {
+      appendMessage(event.data);
+    };
+
+    sendBtn.onclick = function() {
+      if (messageInput.value.trim() !== '') {
+        const msg = messageInput.value;
+        ws.send(msg);
+        appendMessage("Me: " + msg); // Show own message immediately
+        messageInput.value = '';
+      }
+    };
+
+    function appendMessage(msg) {
+      const div = document.createElement('div');
+      div.textContent = msg;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
